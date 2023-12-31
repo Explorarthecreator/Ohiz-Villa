@@ -12,7 +12,7 @@ function Homepage() {
         <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
         <div className="card-body">
           <h2 className="card-title">
-            Lodge C
+            Lodge A
           </h2>
           <p>
             This facility boosts of constant electricity, security and water. It is very affordable and the best in the area for students
@@ -29,7 +29,7 @@ function Homepage() {
         <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
         <div className="card-body">
           <h2 className="card-title">
-            Lodge C
+            Lodge B
           </h2>
           <p>
             This facility boosts of constant electricity, security and water. It is very affordable and the best in the area for students
