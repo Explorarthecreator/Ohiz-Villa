@@ -62,6 +62,7 @@ export const LodgeProvider=({children})=>{
         lodge:state.lodge,
         // rom: state.lodge,
         fetchLodge,
+        setLoading,
         // setRa
     }}>
         {children}
