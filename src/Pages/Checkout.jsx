@@ -68,7 +68,7 @@ function Checkout() {
         text: 'Pay with Flutterwave!',
         callback: (response) => {
            console.log(response);
-           navigate('/')
+           navigate('/red')
           closePaymentModal() // this will close the modal programmatically
           toast.success('Payment successful')
 
@@ -89,7 +89,7 @@ function Checkout() {
         if(reference.status === 'success'){
             console.log(reference);
             toast.success('Payment successful')
-            navigate('/')
+            navigate('/red')
 
         }
         console.log(rom);
@@ -112,6 +112,7 @@ function Checkout() {
 
         e.preventDefault()
         setDisableInput(true)
+        // window.print()
         
     }
 
