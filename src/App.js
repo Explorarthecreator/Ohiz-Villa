@@ -27,7 +27,7 @@ function App() {
                 <Route path="/notfound" element={<Notfound/>}/>
                 <Route path="/checkout" element={<Checkout/>}/>
                 <Route path="/*" element={<Notfound/>}/>
-                <Route path="/red?:params" element={<RedirectPaymentPage/>}/>
+                <Route path="/red" element={<RedirectPaymentPage/>}/>
               </Routes>
             </main>
             <Footer/>
