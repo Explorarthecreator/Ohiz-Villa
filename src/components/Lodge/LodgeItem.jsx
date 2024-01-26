@@ -1,6 +1,9 @@
 // import { useContext } from "react"
+import { useContext } from "react"
+import LodgeContext from "../../context/lodge/LodgeContext"
 import { Link } from "react-router-dom"
 function LodgeItem({lodge}) {
+    const {setLoading} = useContext(LodgeContext)
   return (
         <div className="card card-compact w-96 md:w-80 xl:w-96 bg-base-100 shadow-xl">
             <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
@@ -50,7 +53,7 @@ function LodgeItem({lodge}) {
   
                 </div>
                 <div className="card-actions justify-start">
-                    <Link to={`/lodge/${lodge.webname}`} className="btn btn-primary">
+                    <Link to={`/lodge/${lodge.webname}`} className="btn btn-primary" onClick={setLoading}>
                     Secure a room
                     </Link>
                 </div>
