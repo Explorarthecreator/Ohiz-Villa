@@ -5,7 +5,7 @@ function Room({rooms}) {
     <div className="grid grid-cols-2 gap-y-6 md:grid-cols-3 lg:grid-cols-4">
         {
             rooms.map((room)=>(
-              <RoomItem room={room} key={room.number}/>
+              <RoomItem room={room} key={room.id}/>
             ))
         }
     </div>
