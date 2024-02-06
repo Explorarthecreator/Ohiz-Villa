@@ -18,7 +18,7 @@ function Checkout() {
     // const [phoneNumber,setPhonenumber] = useState()
     // const [email,setEmail] = useState('')
     const {rom} = useContext(RoomContext)
-    const {lodge} = useContext(LodgeContext)
+    const {lodge, setReceipt} = useContext(LodgeContext)
     const [disableInput, setDisableInput] = useState(false)
     const [paymentGateway, setPaymentGateway] = useState(true)
 
@@ -28,6 +28,7 @@ function Checkout() {
         email
     } = formData
 
+    // const customerData = formData
     const{
         price,
         number
@@ -35,7 +36,7 @@ function Checkout() {
 
     const lodgeName = lodge.name
 
-    const details = {lodgeName,number,price}
+    const details = {lodgeName,number,price,name}
 
     
     const handleName =(e)=>{
@@ -77,6 +78,7 @@ function Checkout() {
         callback: (response) => {
            console.log(response);
            navigate('/red')
+           setReceipt(details)
           closePaymentModal() // this will close the modal programmatically
           toast.success('Payment successful')
 
@@ -97,6 +99,7 @@ function Checkout() {
         if(reference.status === 'success'){
             console.log(reference);
             toast.success('Payment successful')
+            setReceipt(details)
             navigate('/red')
 
         }
@@ -142,7 +145,7 @@ function Checkout() {
                 <p>
                     Lodge Details
                 </p>
-                <input type="text" placeholder="You can't touch this" className="input input-bordered w-full max-w-xs" disabled value={lodge.name} /> 
+                <input type="text"  className="input input-bordered w-full max-w-xs" disabled value={lodge.name} /> 
             </div>
             <div>
                 <p>
