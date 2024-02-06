@@ -22,6 +22,16 @@ const LodgeReducer = (state,action)=>{
                 ...state,
                 rom:action.payload
             }
+        case 'SET_RECEIPT':
+            return {
+                ...state,
+                receipt: action.payload
+            }
+        case 'SET_LODGE':
+            return{
+                ...state,
+                lodge:action.payload
+            }
         default:
             return state
     }
