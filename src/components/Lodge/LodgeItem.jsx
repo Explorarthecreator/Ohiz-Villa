@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 function LodgeItem({lodge}) {
     const {setLoading} = useContext(LodgeContext)
   return (
-        <div className="card card-compact w-96 md:w-80 xl:w-96 bg-base-100 shadow-xl">
+        <div className="card card-compact w-11/12 md:w-80 xl:w-96 bg-base-100 shadow-xl">
             <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">
@@ -22,7 +22,7 @@ function LodgeItem({lodge}) {
                         <div className="stat-title">Total</div>
                         <div className=" text-xl text-primary font-extrabold">
                             {
-                                lodge.totalNum
+                                lodge.totalNumber
                             }
                         </div>
                     </div>
@@ -44,7 +44,7 @@ function LodgeItem({lodge}) {
                         </div>
                         <div className=" text-xl text-primary font-extrabold">
                             {
-                                lodge.occupiedRooms
+                                lodge.Occupied
                             }
                         </div>
                     </div>
@@ -53,7 +53,7 @@ function LodgeItem({lodge}) {
   
                 </div>
                 <div className="card-actions justify-start">
-                    <Link to={`/lodge/${lodge.webname}`} className="btn btn-primary" onClick={setLoading}>
+                    <Link to={`/lodge/${lodge.id}`} className={`btn btn-primary ${lodge.availableRooms >0? 'btn-primary':'btn-disabled'} `}  >
                     Secure a room
                     </Link>
                 </div>
