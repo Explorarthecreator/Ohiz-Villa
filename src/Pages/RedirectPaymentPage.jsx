@@ -12,18 +12,19 @@ function RedirectPaymentPage() {
     // const params = new Url
   return (
     <div>
-      <p>
+      {/* <p>
         Payment was successful
-      </p>
+      </p> */}
+      <button onClick={handlePrint} className="btn btn-primary">
+          Print Receipt
+      </button>
       <div className="overflow-x-auto">
         {/* <ReactToPrint trigger={()=>{
           return <button> Print Receipt</button>
         }} content={()=> componentRef}/> */}
 
         <Printer ref={componentRef}/>
-        <button onClick={handlePrint}>
-          Print Receipt
-        </button>
+        
         
       </div>
     </div>
