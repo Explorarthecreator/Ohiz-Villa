@@ -1,7 +1,7 @@
 // import { Link } from "react-router-dom"
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-// import LodgeContext from "../../context/lodge/LodgeContext";
+import LodgeContext from "../../context/lodge/LodgeContext";
 import RoomContext from "../../context/room/RoomContext";
 function RoomItem({room}) {
 
