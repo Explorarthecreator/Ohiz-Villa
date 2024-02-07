@@ -1,17 +1,64 @@
 import { useParams } from "react-router-dom"
-import { useContext,useEffect } from "react"
+import { useContext,useEffect, useState } from "react"
 import LodgeContext from "../context/lodge/LodgeContext"
 import Room from "../components/Room/Room"
 import Loading from "../components/layout/Loading"
+import { collection, getDoc, getDocs, query, where, doc } from "firebase/firestore";
+import {db} from '../firebase.config'
+
 
 function Lodge() {
     const params = useParams()
 
-    const {lodge,fetchLodge,loading} = useContext(LodgeContext)
+    const {setLodgee} = useContext(LodgeContext)
+
+    const [loading,setLoading] = useState(true)
+    const [lodge,setLodge] = useState({})
+    const [rooms, setRooms] = useState(null)
+    const[totalRooms,setTotalRooms] = useState(0)
+    const[occupiedRooms,setOccupiedRooms] = useState(0)
+    const[availableRooms,setAvailableRooms] = useState(0)
+
+    // const {lodge,fetchLodge,loading} = useContext(LodgeContext)
 
     useEffect(()=>{
-        fetchLodge(params.lodgename)
-    },[])
+        // fetchLodge(params.lodgename)
+        const fetchItems = async ()=>{
+            const lodgeRef = doc(db,'lodges',params.lodgename)
+            const lodgeSnap = await getDoc(lodgeRef)
+
+            const roomRef = collection(db,'rooms')
+            const roomQuery = query(roomRef,where('lodgeRef','==',lodgeSnap.id))
+            const roomSnap = await getDocs(roomQuery)
+            
+            setTotalRooms(roomSnap.size)
+            let availableRooms = 0
+            let rooms = []
+            roomSnap.forEach((doc)=>{
+                rooms.push({
+                    id:doc.id,
+                    price:doc.data().price,
+                    available:doc.data().available
+                })
+                if(doc.data().available){
+                    availableRooms+=1
+                }
+            })
+            console.log(rooms);
+            setAvailableRooms(availableRooms)
+            setOccupiedRooms(roomSnap.size - availableRooms)
+            if(lodgeSnap.exists()){
+                setLodge(lodgeSnap.data())
+                // console.log(object);
+                setRooms(rooms)
+                setLodgee(lodgeSnap.data())
+                setLoading(false)
+                console.log(lodgeSnap.data());
+            }
+        }
+
+        fetchItems()
+    },[params.lodgename])
 
     
 
@@ -30,7 +77,7 @@ function Lodge() {
                 </div>
                 <div className="stat-value text-primary text-center text-xl lg:text-5xl">
                     {
-                        lodge.totalNum
+                        totalRooms
                     }
                 </div>
             </div>
@@ -41,7 +88,7 @@ function Lodge() {
                 </div>
                 <div className="stat-value text-secondary text-center text-xl lg:text-5xl">
                     {
-                        lodge.availableRooms
+                        availableRooms
                     }
                 </div>
             </div>
@@ -52,7 +99,7 @@ function Lodge() {
                 </div>
                 <div className="stat-value text-secondary text-center text-xl lg:text-5xl">
                     {
-                        lodge.occupiedRooms
+                        occupiedRooms
                     }
                 </div>
             </div>
@@ -62,7 +109,7 @@ function Lodge() {
         <h1 className="text-6xl font-bold text-gray-300 mb-7">
             Rooms
         </h1>
-        <Room rooms={lodge.rooms} />
+        <Room rooms={rooms} />
     </div>
   )
 }
