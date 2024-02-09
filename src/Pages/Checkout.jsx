@@ -3,6 +3,8 @@ import RoomContext from "../context/room/RoomContext"
 import { FlutterWaveButton, closePaymentModal } from "flutterwave-react-v3"
 import { PaystackButton } from "react-paystack"
 import {toast} from 'react-toastify'
+import { doc, updateDoc } from "firebase/firestore"
+import { db } from "../firebase.config"
 import { useNavigate } from "react-router-dom"
 import LodgeContext from "../context/lodge/LodgeContext"
 // import Flutter from '../components/Flutter'
@@ -30,14 +32,23 @@ function Checkout() {
 
     // const customerData = formData
     const{
+        id,
         price,
         number
     } = rom
 
     const lodgeName = lodge.name
 
-    const details = {lodgeName,number,price,name}
 
+    const details = {lodgeName,number,price,name,id}
+
+    const updateRoom = async(data)=>{
+        const roomRef = doc(db,'rooms',data.id)
+
+        await updateDoc(roomRef,{
+            available:false
+        })
+    }
     
     const handleName =(e)=>{
         setFormData((prevState)=>({
@@ -76,11 +87,16 @@ function Checkout() {
         ...flutterWaveConfig,
         text: 'Pay with Flutterwave!',
         callback: (response) => {
-           console.log(response);
-           navigate('/red')
-           setReceipt(details)
+            if(response.status === 'successful'){
+                console.log(response);
+                setReceipt(details)
+                updateRoom(details)
+                toast.success('Payment successful')
+                navigate('/red')
+            }
+            
+           
           closePaymentModal() // this will close the modal programmatically
-          toast.success('Payment successful')
 
         },
         onClose: () => {},
@@ -100,6 +116,7 @@ function Checkout() {
             console.log(reference);
             toast.success('Payment successful')
             setReceipt(details)
+            updateRoom(details)
             navigate('/red')
 
         }
@@ -125,7 +142,11 @@ function Checkout() {
         if(name === ''){
             toast.error('Please enter your name')
             return
-        }else{
+        }
+        else if(typeof price === 'undefined'){
+            toast.error('Please go back and select a room')
+        }
+        else{
             setDisableInput(true)
         }
         // window.print()
@@ -139,7 +160,6 @@ function Checkout() {
 
   return (
     <div>
-
         <div className="flex gap-3 mb-6">
             <div>
                 <p>
@@ -157,7 +177,7 @@ function Checkout() {
                 <p>
                     Price
                 </p>
-                <input type="text" placeholder="You can't touch this" className="input input-bordered w-full max-w-xs" disabled value={price} />
+                <input type="text" placeholder="You can't touch this" className="input input-bordered w-full max-w-xs" disabled value={price?.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',')} />
             </div>
         </div>
 
@@ -211,7 +231,7 @@ function Checkout() {
 
                     
                     {/* <button type='submit' className='rounded-l-none w-36 btn btn-lg' disabled={!dis}> */}
-                        {/* <Paystack className="btn btn-outline" email={email} price={price} name={name} phoneNumber={phoneNumber}/> */}
+                    {/* <Paystack className="btn btn-outline" email={email} price={price} name={name} phoneNumber={phoneNumber}/> */}
                     {/* </button> */}
                     {/* <Flutter price={price} user={formData} num={number}/> */}
 
