@@ -47,7 +47,7 @@ function RoomItem({room}) {
                 </h2>
                 <p className="text-2xl">
                     {
-                        room.price
+                        room.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',')
                     }
                 </p>
                 <div className="card-actions justify-start">
