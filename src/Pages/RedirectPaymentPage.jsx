@@ -2,8 +2,10 @@
 import { useRef } from "react"
 import {useReactToPrint} from "react-to-print"
 import { Printer } from "./Printer"
+import { useNavigate } from "react-router-dom"
 function RedirectPaymentPage() {
 
+  const navigate = useNavigate()
     const componentRef = useRef()
     const handlePrint = useReactToPrint({
       content: ()=> componentRef.current
@@ -15,7 +17,10 @@ function RedirectPaymentPage() {
       {/* <p>
         Payment was successful
       </p> */}
-      <button onClick={handlePrint} className="btn btn-primary">
+      <button onClick={()=>{
+        handlePrint()
+        navigate('/')
+      }} className="btn btn-primary">
           Print Receipt
       </button>
       <div className="overflow-x-auto">

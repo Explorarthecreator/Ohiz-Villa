@@ -159,8 +159,8 @@ function Checkout() {
      }
 
   return (
-    <div>
-        <div className="flex gap-3 mb-6">
+    <div className=" font-medium">
+        <div className="flex gap-3 mb-6 text-black justify-center">
             <div>
                 <p>
                     Lodge Details
@@ -181,15 +181,16 @@ function Checkout() {
             </div>
         </div>
 
-        <h1 className=" text-3xl uppercase">
-            Personal Details
-        </h1>
-        <span>
-            (Please enter your correct details)
-        </span>
+        
 
-        <form onSubmit={handlesubmit} className=" mt-7">
-            <div className="form-control">
+        <form onSubmit={handlesubmit} className=" py-7 my-7 text-base-content border-success w-4/5 lg:w-1/2 m-auto shadow-2xl rounded-lg bg-base-100 text-center">
+            <h1 className=" text-3xl uppercase">
+                Personal Details
+            </h1>
+            <span>
+                (Please enter your correct details)
+            </span>
+            <div className="form-control mt-7">
                 <div className="">
                     {/* <input 
                         type="text" 
@@ -211,19 +212,19 @@ function Checkout() {
                             Choose A payment option
                         </p>
                         
-                        <div className="flex gap-3">
+                        <div className="flex gap-3 justify-center">
                             <input type="radio" name="payment" id="paystack" onChange={(e)=>handleSelect(e)} checked={paymentGateway} className="radio radio-lg"/> Paystack <br />
                             <input type="radio" name="payment" id="flutter" onChange={(e)=>handleSelect(e)} checked={!paymentGateway} className="radio radio-lg" /> Flutter <br />
                         </div>
-                        <div className="mt-6 md:flex">
-                            <PaystackButton {...componentProps}  className={`btn btn-lg btn-success ${paymentGateway?'btn-success':'btn-disabled'}`}/> 
-                            <FlutterWaveButton {...fwConfig} disabled={paymentGateway} className="btn btn-lg mt-3 btn-success"/>
+                        <div className="mt-6 md:flex md:justify-between w-4/5 m-auto ">
+                            <PaystackButton {...componentProps}  className={`btn btn-lg btn-success ${paymentGateway?'btn-success':'btn-disabled'} text-black`}/> 
+                            <FlutterWaveButton {...fwConfig} disabled={paymentGateway} className="btn btn-lg btn-success text-black"/>
                             {/* <button className="btn btn-lg ml-3 btn-success" disabled={paymentGateway}>
                                 Fluterwave
                             </button> */}
                         </div>
                         </div>:
-                        <button type='submit' className='rounded-l-none w-36 btn btn-lg mt-5'>
+                        <button type='submit' className='rounded-l-none w-36 btn btn-lg mt-5 lg:hover:shadow-xl btn-outline' >
                             Pay Now
                         </button>
                     }

@@ -14,11 +14,12 @@ export const LodgeProvider=({children})=>{
         lodge:{},
         receipt:{},
     }
+    const [state,dispatch] = useReducer(LodgeReducer,initialState)
+
     useEffect(()=>{
         fetchLodges()
     },[])
 
-    const [state,dispatch] = useReducer(LodgeReducer,initialState)
 
 
     const fetchLodges = async ()=>{

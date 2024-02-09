@@ -65,12 +65,16 @@ function Lodge() {
 
     if(loading){
         return(
+            <div className="grid grid-cols-1 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
             <Loading/>
+            <Loading/>
+            <Loading/>
+            </div>
         )
     }
   return (
     <div>
-        <div className="stats shadow mb-6 stats-vertical lg:stats-horizontal">
+        <div className="stats shadow-xl mb-6 stats-vertical lg:stats-horizontal">
   
             <div className="stat">
                 <div className="stat-title">
@@ -107,7 +111,7 @@ function Lodge() {
         
         </div>
 
-        <h1 className="text-6xl font-bold text-gray-300 mb-7">
+        <h1 className="text-6xl font-bold mb-7 text-black">
             Rooms
         </h1>
         <Room rooms={rooms} />

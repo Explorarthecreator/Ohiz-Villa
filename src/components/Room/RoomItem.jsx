@@ -38,7 +38,7 @@ function RoomItem({room}) {
     //     console.log('d');
     // }, 5000);
   return (
-        <div className="card card-compact w-48 md:w-60 xl:w-64 bg-base-100 shadow-xl">
+        <div className="card card-compact w-48 md:w-60 xl:w-64 shadow-xl bg-base-100">
             <div className="card-body">
                 <h2 className="card-title">
                     {
