@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 function LodgeItem({lodge}) {
     const {setLoading} = useContext(LodgeContext)
   return (
-        <div className="card card-compact w-11/12 md:w-80 xl:w-96 bg-base-100 shadow-xl">
+        <div className="card card-compact w-11/12 md:w-80 xl:w-96 bg-base-100 shadow-xl m-auto">
             <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">
