@@ -38,7 +38,8 @@ function Lodge() {
                 rooms.push({
                     id:doc.id,
                     price:doc.data().price,
-                    available:doc.data().available
+                    available:doc.data().available,
+                    number:doc.data().number
                 })
                 if(doc.data().available){
                     availableRooms+=1
