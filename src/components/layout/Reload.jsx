@@ -5,7 +5,7 @@ function Reload() {
     }
   return (
     <div className="hero">
-      <div className="text-center hero-content">
+      <div className="text-center hero-content text-black">
         <div className=" max-w-4xl">
           <h1 className="text-8xl font-bold mb-8">
             oops!
