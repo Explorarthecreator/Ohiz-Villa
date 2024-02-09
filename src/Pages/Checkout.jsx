@@ -65,7 +65,7 @@ function Checkout() {
     // },[rom])
 
     const flutterWaveConfig = {
-        public_key: process.env.REACT_APP_TEST_KEY,
+        public_key: process.env.REACT_APP_FLUTTER_TEST_KEY,
         tx_ref: Date.now(),
         amount: price,
         currency: 'NGN',
@@ -108,7 +108,7 @@ function Checkout() {
         firstname:name,
         phone:phoneNumber,
         amount: price*100, //Amount is in the country's lowest currency. E.g Kobo, so 20000 kobo = N200
-        publicKey: 'pk_test_0d2221fbbb608ceee7f64ef5285414ce4717c1ae',
+        publicKey: process.env.REACT_APP_PAYSTACK_PUBLIC_KEY,
       };
       const handlePaystackSuccessAction = (reference) => {
         // Implementation for whatever you want to do with reference and after success call.
