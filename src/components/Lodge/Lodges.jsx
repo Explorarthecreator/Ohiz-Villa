@@ -2,6 +2,7 @@ import { useContext } from "react"
 import LodgeContext from "../../context/lodge/LodgeContext"
 import LodgeItem from "./LodgeItem"
 import Loading from "../layout/Loading"
+import Reload from "../layout/Reload"
 function Lodges() {
     const {loading,lodges} = useContext(LodgeContext)
     if(loading){
@@ -16,7 +17,7 @@ function Lodges() {
 
     if(lodges.length <=0){
       return(
-          <p>Please reload this page</p>
+          <Reload/>
       )
     }
   return (
