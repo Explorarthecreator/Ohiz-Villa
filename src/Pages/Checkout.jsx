@@ -46,7 +46,8 @@ function Checkout() {
         const roomRef = doc(db,'rooms',data.id)
 
         await updateDoc(roomRef,{
-            available:false
+            available:false,
+            occupant:data.name
         })
     }
     
@@ -183,7 +184,7 @@ function Checkout() {
 
         
 
-        <form onSubmit={handlesubmit} className=" py-7 my-7 text-base-content border-success w-4/5 lg:w-1/2 m-auto shadow-2xl rounded-lg bg-base-100 text-center">
+        <form onSubmit={handlesubmit} className=" p-7 my-7 text-base-content border-success w-11/12 lg:w-1/2 m-auto shadow-2xl rounded-lg bg-base-100 text-center">
             <h1 className=" text-3xl uppercase">
                 Personal Details
             </h1>
