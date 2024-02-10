@@ -8,7 +8,7 @@ function Reload() {
       <div className="text-center hero-content text-black">
         <div className=" max-w-4xl">
           <h1 className="text-8xl font-bold mb-8">
-            oops!
+            Oops!
           </h1>
           <p className="text-2xl mb-8">
             Please check your network and click on the reload button
@@ -17,8 +17,6 @@ function Reload() {
             {/* <FaHome className="mr-2"/> */}
             Reload Page
           </button>
-        
-          
         </div>
       </div>
     </div>

@@ -17,7 +17,7 @@ function App() {
     <LodgeProvider>
       <RoomProvider>
         <Router>
-          <div className="flex flex-col justify-between h-screen bg-neutral-content">
+          <div className="flex flex-col justify-between h-screen bg-neutral-content overflow-auto">
             <Navbar title="Ohiz Villa"/>
             <main className="container mx-auto px-3 pb-1">
               <Routes>
