@@ -215,7 +215,7 @@ function Checkout() {
                         
                         <div className="flex gap-3 justify-center">
                             <input type="radio" name="payment" id="paystack" onChange={(e)=>handleSelect(e)} checked={paymentGateway} className="radio radio-lg"/> Paystack <br />
-                            <input type="radio" name="payment" id="flutter" onChange={(e)=>handleSelect(e)} checked={!paymentGateway} className="radio radio-lg" /> Flutter <br />
+                            <input type="radio" name="payment" id="flutter" onChange={(e)=>handleSelect(e)} checked={!paymentGateway} className="radio radio-lg" /> Flutterwave <br />
                         </div>
                         <div className="mt-6 md:flex md:justify-between w-4/5 m-auto ">
                             <PaystackButton {...componentProps}  className={`btn btn-lg btn-success ${paymentGateway?'btn-success':'btn-disabled'} text-black`}/> 
