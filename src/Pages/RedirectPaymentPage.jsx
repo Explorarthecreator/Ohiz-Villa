@@ -17,7 +17,7 @@ function RedirectPaymentPage() {
       {/* <p>
         Payment was successful
       </p> */}
-      <div className="w-2/5 m-auto flex justify-end mb-3">
+      <div className=" w-11/12 md:w-2/5 m-auto flex justify-end mb-3">
         <button onClick={()=>{
           handlePrint()
           navigate('/')
