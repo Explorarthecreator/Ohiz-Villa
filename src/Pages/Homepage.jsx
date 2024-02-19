@@ -9,12 +9,7 @@ function Homepage() {
   //   navigate("/about")
   // }
   return (
-    <>
-      <h1 className=" text-2xl md:text-3xl text-black font-medium capitalize my-8">
-        Choose your desired Lodge
-      </h1>
       <Lodges/>
-    </>
   )
 }
 
