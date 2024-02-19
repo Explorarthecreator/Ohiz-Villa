@@ -6,7 +6,7 @@ function LodgeItem({lodge}) {
     const {setLoading} = useContext(LodgeContext)
   return (
         <div className="card card-compact w-11/12 md:w-80 xl:w-96 bg-base-100 shadow-xl m-auto">
-            <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+            <figure><img src="https://images.unsplash.com/photo-1633115365874-3e8f3faddb54?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">
                     {
