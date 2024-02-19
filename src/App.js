@@ -19,7 +19,7 @@ function App() {
         <Router>
           <div className="flex flex-col justify-between h-screen bg-neutral-content overflow-auto">
             <Navbar title="Ohiz Villa"/>
-            <main className="container mx-auto px-3 pb-1">
+            <main className="container mx-auto px-3 pb-1 mb-8">
               <Routes>
                 <Route path="/" element={<Homepage/>}/>
                 <Route path="/about" element={<Aboutpage/>}/>
