@@ -8,35 +8,11 @@ function RoomItem({room}) {
     const {setRa} = useContext(RoomContext)
     let navigate = useNavigate()
     const handleclick = (id)=>{
-        // const {
-        //     number,
-        //     price,
-        //     available
-        // } = id
-        // console.log(id);
-        // console.log('Clicked ' + id.price);
-        // printsta();
+        
 
         setRa(id)
-        // setTimeout(() => {
-        //     navigate("/checkout") 
-        // }, 5000);
         navigate("/checkout") 
-
-        // console.log(id);
-        // printsta()
-        // console.log(rom);
-        // console.log(rom.number);
     }
-    // const printsta = ()=>{
-    //     console.log(rom);
-    // }
-    // useEffect(()=>{
-    //     console.log(rom);
-    // },[])
-    // setTimeout(() => {
-    //     console.log('d');
-    // }, 5000);
   return (
         <div className="card card-compact w-48 md:w-60 xl:w-64 shadow-xl bg-base-100">
             <div className="card-body">

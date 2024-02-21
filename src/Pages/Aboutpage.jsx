@@ -1,4 +1,5 @@
 import { FaCheckCircle, FaBuilding, FaPaypal, FaMoneyBillWave, FaReceipt, FaPen } from "react-icons/fa"
+
 function AboutPage() {
   return (
     <div className="text-black">
@@ -14,6 +15,7 @@ function AboutPage() {
       </h1>
 
       <div className="grid grid-cols-1 gap-y-6 md:grid-cols-2 lg:grid-cols-3 my-5 lg:w-5/6 xl:w-3/4  m-auto">
+  
         <div className="card shadow-2xl card-compact w-11/12 md:w-80 lg:w-64 xl:w-72 m-auto bg-slate-300">
           <figure className="px-5 pt-5">
             <FaBuilding color='black' size={'2em'}/>    

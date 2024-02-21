@@ -19,10 +19,8 @@ function Lodge() {
     const[occupiedRooms,setOccupiedRooms] = useState(0)
     const[availableRooms,setAvailableRooms] = useState(0)
 
-    // const {lodge,fetchLodge,loading} = useContext(LodgeContext)
 
     useEffect(()=>{
-        // fetchLodge(params.lodgename)
         const fetchItems = async ()=>{
             const lodgeRef = doc(db,'lodges',params.lodgename)
             const lodgeSnap = await getDoc(lodgeRef)
@@ -50,7 +48,6 @@ function Lodge() {
             setOccupiedRooms(roomSnap.size - availableRooms)
             if(lodgeSnap.exists()){
                 setLodge(lodgeSnap.data())
-                // console.log(object);
                 setRooms(rooms)
                 setLodgee(lodgeSnap.data())
                 setLoading(false)
