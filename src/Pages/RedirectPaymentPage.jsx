@@ -1,4 +1,3 @@
-// import { useParams } from "react-router-dom"
 import { useRef } from "react"
 import {useReactToPrint} from "react-to-print"
 import { Printer } from "./Printer"
@@ -10,13 +9,9 @@ function RedirectPaymentPage() {
     const handlePrint = useReactToPrint({
       content: ()=> componentRef.current
     })
-    // const params = useParams()
-    // const params = new Url
   return (
     <div>
-      {/* <p>
-        Payment was successful
-      </p> */}
+      
       <div className=" w-11/12 md:w-2/5 m-auto flex justify-end mb-3">
         <button onClick={()=>{
           handlePrint()
@@ -26,13 +21,7 @@ function RedirectPaymentPage() {
         </button>
       </div>
       <div className="overflow-x-auto">
-        {/* <ReactToPrint trigger={()=>{
-          return <button> Print Receipt</button>
-        }} content={()=> componentRef}/> */}
-
         <Printer ref={componentRef}/>
-        
-        
       </div>
     </div>
   )

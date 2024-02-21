@@ -1,10 +1,8 @@
 import React, { useContext } from 'react'
 import { FaCheckCircle } from 'react-icons/fa'
-// import RoomContext from '../context/room/RoomContext'
 import LodgeContext from '../context/lodge/LodgeContext'
 
 export const Printer = React.forwardRef((props,ref)=>{
-    // const {rom} = useContext(RoomContext)
     const {receipt} = useContext(LodgeContext)
     return (
         
@@ -14,11 +12,6 @@ export const Printer = React.forwardRef((props,ref)=>{
                     <FaCheckCircle color='#65B741' size={'5em'}/>    
                 </figure>
                 <div className="card-body">
-                    {/* <h2 className="card-title">
-                        Successfull
-                    </h2> */}
-                    
-
                     <div className="overflow-x-auto">
                         <table className="table">
                             <tbody>
@@ -60,7 +53,7 @@ export const Printer = React.forwardRef((props,ref)=>{
                             </tr>
                             </tbody>
                         </table>
-</div>
+                    </div>
                 </div>
             </div>
         </div>        

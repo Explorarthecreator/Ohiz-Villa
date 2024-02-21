@@ -5,7 +5,6 @@ import { collection, getDoc, getDocs, query, where, doc } from "firebase/firesto
 
 const LodgeContext = createContext()
 
-// const LOCAL_URL = process.env.LOCAL_HOST_LINK
 export const LodgeProvider=({children})=>{
 
     const initialState = {
@@ -23,11 +22,7 @@ export const LodgeProvider=({children})=>{
 
 
     const fetchLodges = async ()=>{
-        // const response = await fetch("http://localhost:5000/lodge")
-        
-        // const data = await response.json()
-
-        
+            
         try {
             const lodgeRef = collection(db,'lodges')
 
@@ -36,18 +31,9 @@ export const LodgeProvider=({children})=>{
             
 
             const querySnap = await getDocs(lodgeRef)
-            //  /
-            // console.log(querySnap);
-            // const geee= 'My name'
+            
             const lodges = []
-            // const rooe = {
-            //     geee,
-            //     room
-            // }
-
             
-            
-            // console.log(querySnap.size);
             querySnap.forEach(async (doc)=>{
                 const roomQuery = query(roomRef,where('lodgeRef','==',doc.id))
                 const roomSnap = await getDocs(roomQuery)
@@ -69,12 +55,7 @@ export const LodgeProvider=({children})=>{
                     Occupied,
                     availableRooms
                 })
-            })
-            console.log(lodges);
-            // console.log('total rooms '+totalNumber)
-            // console.log('occupied rooms '+Occupied);
-
-            
+            })        
             setTimeout(()=>{
                 dispatch({
                     type:'GET_LODGES',
@@ -90,12 +71,6 @@ export const LodgeProvider=({children})=>{
 
     const fetchLodge = async (webname)=>{
         setLoading()
-        // const response = await fetch(`http://localhost:5001/${webname}`)
-
-        // dispatch({
-        //     type: 'GET_LODGE',
-        //     payload:data
-        // })
         const lodgeRef = doc(db,'lodges',webname)
         const lodgeSnap = await getDoc(lodgeRef)
 
@@ -116,33 +91,21 @@ export const LodgeProvider=({children})=>{
         })
     }
     const setLodgee = (ra)=>{
-        // console.log('Currently working on that room thing');
         dispatch({
             type: 'SET_LODGE',
             payload: ra
         })
-        // console.log(ra);
     }
-    // const setRa = (ra)=>{
-    //     console.log('Currently working on that room thing');
-    //     dispatch({
-    //         type: 'SET_R',
-    //         payload:ra
-    //     })
-    //     console.log(ra);
-    // }
 
     return <LodgeContext.Provider value={{
         lodges : state.lodges,
         loading:state.loading,
         lodge:state.lodge,
         receipt: state.receipt,
-        // rom: state.lodge,
         fetchLodge,
         setLoading,
         setReceipt,
         setLodgee,
-        // setRa
     }}>
         {children}
     </LodgeContext.Provider>

@@ -13,12 +13,10 @@ export const RoomProvider=({children})=>{
     const [state,dispatch] = useReducer(RoomReducer,initialState)
 
     const setRa = (ra)=>{
-        // console.log('Currently working on that room thing');
         dispatch({
             type: 'SET_ROOM',
             payload: ra
         })
-        // console.log(ra);
     }
 
     return <RoomContext.Provider value={{

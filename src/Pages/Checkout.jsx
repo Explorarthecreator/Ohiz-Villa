@@ -7,7 +7,6 @@ import { doc, updateDoc } from "firebase/firestore"
 import { db } from "../firebase.config"
 import { useNavigate } from "react-router-dom"
 import LodgeContext from "../context/lodge/LodgeContext"
-// import Flutter from '../components/Flutter'
 function Checkout() {
 
 
@@ -17,8 +16,7 @@ function Checkout() {
         phoneNumber:'',
         email:''
     })
-    // const [phoneNumber,setPhonenumber] = useState()
-    // const [email,setEmail] = useState('')
+    
     const {rom} = useContext(RoomContext)
     const {lodge, setReceipt} = useContext(LodgeContext)
     const [disableInput, setDisableInput] = useState(false)
@@ -30,7 +28,7 @@ function Checkout() {
         email
     } = formData
 
-    // const customerData = formData
+    
     const{
         id,
         price,
@@ -57,20 +55,14 @@ function Checkout() {
             [e.target.id] : e.target.value
         }))
 
-        // console.log(formData);
-        console.log(process.env.REACT_APP_FLUTTER_DICK);
-        console.log(process.env.REACT_APP_TEST_KEY)
+        
     }
-    // useEffect(()=>{
-    //     console.log(rom);
-    // },[rom])
-
+    
     const flutterWaveConfig = {
         public_key: process.env.REACT_APP_FLUTTER_TEST_KEY,
         tx_ref: Date.now(),
         amount: price,
         currency: 'NGN',
-        // redirect_url : 'http://localhost:3000/red',
         payment_options: 'card,mobilemoney,ussd',
         customer: {
           email: email,
@@ -79,7 +71,6 @@ function Checkout() {
         },
         customizations: {
           title: 'Ohiz Villa',
-        //   description: `Payment for room ${number}`,
           description:'Payment for Explorar',
           logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
         },
@@ -89,7 +80,6 @@ function Checkout() {
         text: 'Pay with Flutterwave!',
         callback: (response) => {
             if(response.status === 'successful'){
-                console.log(response);
                 setReceipt(details)
                 updateRoom(details)
                 toast.success('Payment successful')
@@ -114,7 +104,6 @@ function Checkout() {
       const handlePaystackSuccessAction = (reference) => {
         // Implementation for whatever you want to do with reference and after success call.
         if(reference.status === 'success'){
-            console.log(reference);
             toast.success('Payment successful')
             setReceipt(details)
             updateRoom(details)
@@ -125,7 +114,6 @@ function Checkout() {
         
       };
   
-      // you can call this function anything
       const handlePaystackCloseAction = () => {
         // implementation for  whatever you want to do when the Paystack dialog closed.
         console.log('closed')
@@ -150,7 +138,7 @@ function Checkout() {
         else{
             setDisableInput(true)
         }
-        // window.print()
+
         
     }
 
@@ -193,19 +181,10 @@ function Checkout() {
             </span>
             <div className="form-control mt-7">
                 <div className="">
-                    {/* <input 
-                        type="text" 
-                        className="w-full pr-40 bg-gray-200 input input-md text-black" 
-                        placeholder='Search'
-                        value={''}
-                        // onChange={handleChange}
-                        /> */}
                     <input type="text" placeholder="Enter Full name" className="input input-bordered w-full max-w-xs" id="name" value={name} onChange={handleName} required disabled={disableInput} /> <br />
                     <input type="tel" placeholder="Enter Phone Number" className="input input-bordered w-full max-w-xs my-4" id="phoneNumber" value={phoneNumber}  onChange={handleName} required disabled={disableInput} /> <br />
                     <input type="email" placeholder="Enter Email" className="input input-bordered w-full max-w-xs" id="email" value={email} onChange={handleName} required disabled={disableInput} /> <br />
                     
-                    {/* <input type="radio" name="paymnt" id="fkuer" onSelect={()=>{console.log(" FLutter");}} /> Flutter <br /> */}
-
 
                     {
                         disableInput?<div>
@@ -220,23 +199,12 @@ function Checkout() {
                         <div className="mt-6 md:flex md:justify-between w-4/5 m-auto ">
                             <PaystackButton {...componentProps}  className={`btn btn-lg btn-success ${paymentGateway?'btn-success':'btn-disabled'} text-black`}/> 
                             <FlutterWaveButton {...fwConfig} disabled={paymentGateway} className="btn btn-lg btn-success text-black"/>
-                            {/* <button className="btn btn-lg ml-3 btn-success" disabled={paymentGateway}>
-                                Fluterwave
-                            </button> */}
                         </div>
                         </div>:
                         <button type='submit' className='rounded-l-none w-36 btn btn-lg mt-5 lg:hover:shadow-xl btn-outline' >
                             Pay Now
                         </button>
                     }
-                    
-
-                    
-                    {/* <button type='submit' className='rounded-l-none w-36 btn btn-lg' disabled={!dis}> */}
-                    {/* <Paystack className="btn btn-outline" email={email} price={price} name={name} phoneNumber={phoneNumber}/> */}
-                    {/* </button> */}
-                    {/* <Flutter price={price} user={formData} num={number}/> */}
-
                 </div>
             </div>
         </form>

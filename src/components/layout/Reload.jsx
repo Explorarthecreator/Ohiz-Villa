@@ -14,7 +14,6 @@ function Reload() {
             Please check your network and click on the reload button
           </p>
           <button className="btn btn-primary btn-lg" onClick={reloadPage}>
-            {/* <FaHome className="mr-2"/> */}
             Reload Page
           </button>
         </div>
